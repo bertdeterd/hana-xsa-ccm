@@ -8,4 +8,5 @@
 6. add dependency to sapui5 module
 7. create service with CLI: xs create-service xsuaa space ccm-uaa
 
-
+8. Create Hana DB module (no namespace)
+9. 

@@ -8,11 +8,17 @@ modules:
     requires:
       - name: ccm-uaa
 
-  - name: db
+  
+
+
+  
+
+
+  - name: db_core
     type: hdb
-    path: db
+    path: db_core
     requires:
-     - name: hdi-container
+     - name: hdi-container_3
 
 resources:
   - name: ccm-uaa
@@ -26,5 +32,23 @@ resources:
           schema: ccm
     properties:
        hdi-container-name: ${service-name}
+    type: com.sap.xs.hdi-container
+
+
+  - name: hdi-container_2
+    parameters:
+       config:
+          schema: ccm
+    properties:
+       hdi-container-name_2: ${service-name}
+    type: com.sap.xs.hdi-container
+
+
+  - name: hdi-container_3
+    parameters:
+       config:
+          schema: ccm_cust
+    properties:
+       hdi-container-name_3: ${service-name}
     type: com.sap.xs.hdi-container
 
