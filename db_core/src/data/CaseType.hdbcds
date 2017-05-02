@@ -1,0 +1,10 @@
+context CaseType {
+    entity Header {
+        key ID          : String(10);
+            DESCRIPTION : String(100);
+            ACTIVE      : Boolean;
+    }
+    technical configuration {
+        column store;
+    };
+};
