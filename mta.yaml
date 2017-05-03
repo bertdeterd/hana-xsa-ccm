@@ -7,48 +7,51 @@ modules:
     path: web
     requires:
       - name: ccm-uaa
-
-  
-
-
-  
-
-
+      - name: js_api
+        group: destinations
+        properties:
+          name: core-backend
+          url: '~{url}'
+          forwardAuthToken: true
   - name: db_core
     type: hdb
     path: db_core
     requires:
-     - name: hdi-container_3
-
+      - name: hdi-container_3
+  - name: js
+    type: nodejs
+    path: js
+    provides:
+      - name: js_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: ccm-uaa
+      - name: hdi-container_3
+      - name: db_core
 resources:
   - name: ccm-uaa
     type: com.sap.xs.uaa-space
     parameters:
       config-path: ./xs-security.json
-
   - name: hdi-container
     parameters:
-       config:
-          schema: ccm
+      config:
+        schema: ccm
     properties:
-       hdi-container-name: ${service-name}
+      hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
-
-
   - name: hdi-container_2
     parameters:
-       config:
-          schema: ccm
+      config:
+        schema: ccm
     properties:
-       hdi-container-name_2: ${service-name}
+      hdi-container-name_2: '${service-name}'
     type: com.sap.xs.hdi-container
-
-
   - name: hdi-container_3
     parameters:
-       config:
-          schema: ccm_cust
+      config:
+        schema: ccm_cust
     properties:
-       hdi-container-name_3: ${service-name}
+      hdi-container-name_3: '${service-name}'
     type: com.sap.xs.hdi-container
-
