@@ -1,0 +1,9 @@
+context Priority {
+    entity Header {
+        key ID          : hana.TINYINT;
+            DESCRIPTION : String(100);
+    }
+    technical configuration {
+        column store;
+    };
+};
