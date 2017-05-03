@@ -1,3 +1,4 @@
+@OData.publish : true
 context CaseType {
     entity Header {
         key ID          : String(10);

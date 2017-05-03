@@ -29,25 +29,34 @@ modules:
       - name: ccm-uaa
       - name: hdi-container_3
       - name: db_core
+
+  - name: flp-hana-xsa-ccm
+    type: siteentry
+    path: flp
+    parameters:
+       memory: 64M
+    requires:
+     - name: sap-portal-services-host-hana-xsa-ccm
+     - name: portal-uaa-hana-xsa-ccm
+     - name: sapui5-provider
+       properties:
+          sapui5url: ~{url}
+
+
+  - name: flp-content-hana-xsa-ccm
+    type: sitecontent
+    path: flp-content
+    parameters:
+       memory: 32M
+    requires:
+     - name: sap-portal-services-client-hana-xsa-ccm
+     - name: portal-uaa-hana-xsa-ccm
+
 resources:
   - name: ccm-uaa
     type: com.sap.xs.uaa-space
     parameters:
       config-path: ./xs-security.json
-  - name: hdi-container
-    parameters:
-      config:
-        schema: ccm
-    properties:
-      hdi-container-name: '${service-name}'
-    type: com.sap.xs.hdi-container
-  - name: hdi-container_2
-    parameters:
-      config:
-        schema: ccm
-    properties:
-      hdi-container-name_2: '${service-name}'
-    type: com.sap.xs.hdi-container
   - name: hdi-container_3
     parameters:
       config:
@@ -55,3 +64,31 @@ resources:
     properties:
       hdi-container-name_3: '${service-name}'
     type: com.sap.xs.hdi-container
+
+  - name: sap-portal-services-host-hana-xsa-ccm
+    parameters:
+       config:
+          siteId: hana-xsa-ccm
+    type: com.sap.portal.site-host
+
+
+  - name: portal-uaa-hana-xsa-ccm
+    parameters:
+       service-plan: space
+    type: com.sap.xs.uaa
+
+
+  - name: sapui5-provider
+    parameters:
+       provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
+       version: '>=1.42.0'
+       provider-nid: mta
+    type: configuration
+
+
+  - name: sap-portal-services-client-hana-xsa-ccm
+    parameters:
+       config:
+          siteId: hana-xsa-ccm
+    type: com.sap.portal.site-content
+
