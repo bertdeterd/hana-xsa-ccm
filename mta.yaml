@@ -30,27 +30,10 @@ modules:
       - name: hdi-container_3
       - name: db_core
 
-  - name: flp-hana-xsa-ccm
-    type: siteentry
-    path: flp
-    parameters:
-       memory: 64M
-    requires:
-     - name: sap-portal-services-host-hana-xsa-ccm
-     - name: portal-uaa-hana-xsa-ccm
-     - name: sapui5-provider
-       properties:
-          sapui5url: ~{url}
+  
 
 
-  - name: flp-content-hana-xsa-ccm
-    type: sitecontent
-    path: flp-content
-    parameters:
-       memory: 32M
-    requires:
-     - name: sap-portal-services-client-hana-xsa-ccm
-     - name: portal-uaa-hana-xsa-ccm
+  
 
 resources:
   - name: ccm-uaa

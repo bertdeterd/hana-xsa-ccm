@@ -8,9 +8,11 @@ sap.ui.define([
 	return UIComponent.extend("ccm-web.Component", {
 
 		metadata: {
-			manifest: "json"
+			manifest: "json",
+			config : {	fullWidth : true	}
 		},
-
+		
+	
 		/**
 		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
 		 * @public
